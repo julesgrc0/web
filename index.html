@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CocoAnimation</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: rgb(230, 230, 230);
+      }
+
+      header {
+        position: relative;
+        background: #10883e;
+        height: 50px;
+        width: 100%;
+        -webkit-box-shadow: 0px 2px 10px rgb(160, 160, 160);
+        -moz-box-shadow: 0px 2px 10px rgb(160, 160, 160);
+        box-shadow: 0px 2px 10px rgb(160, 160, 160);
+      }
+
+      header button {
+        outline: none;
+        position: absolute;
+        right: 5px;
+        border: none;
+        background: transparent;
+        top: 50%;
+        width: 35px;
+        height: 35px;
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+        -webkit-transition: 0.3s;
+        -o-transition: 0.3s;
+        -moz-transition: 0.3s;
+        transition: 0.3s;
+      }
+
+      header button:hover {
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.267);
+      }
+
+      header h2 {
+        width: 200px;
+        text-align: center;
+        margin: 0;
+        position: relative;
+        left: 20px;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+        color: white;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      main {
+        display: grid;
+        overflow: hidden;
+        overflow-y: auto;
+        grid-template-columns: repeat(6, 1fr);
+        grid-gap: 0px 10px;
+        grid-auto-rows: -webkit-max-content;
+        grid-auto-rows: max-content;
+        position: relative;
+        top: 100px;
+        height: auto;
+        padding: 20px 5px;
+        width: 80%;
+        left: 50%;
+        background: white;
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        transform: translateX(-50%);
+        margin-bottom: 100px;
+      }
+
+      main div {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        height: 130px;
+        width: auto;
+        background: rgb(220, 220, 220);
+        margin-bottom: 10px;
+        border: 1px solid rgb(216, 216, 216);
+        -webkit-transition: 0.2s;
+        -o-transition: 0.2s;
+        -moz-transition: 0.2s;
+        transition: 0.2s;
+        position: relative;
+      }
+
+      main div:hover {
+        -webkit-filter: brightness(0.5);
+        filter: brightness(0.5);
+      }
+
+      #video-pop {
+        position: fixed;
+        top: 130px;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        transform: translateX(-50%);
+        width: 40%;
+        height: 40%;
+        display: none;
+      }
+      #video-pop iframe {
+        height: 100%;
+        width: 100%;
+      }
+      #info-pop {
+        overflow-y: auto;
+        position: fixed;
+        top: 70px;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        transform: translateX(-50%);
+        width: 40%;
+        height: 80%;
+        background: #ffffff;
+        display: none;
+      }
+      #info-pop img {
+        width: 100%;
+      }
+      #pop-desc {
+        width: 80%;
+        top: 15px;
+        position: relative;
+        left: 45%;
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        transform: translateX(-50%);
+        word-break: break-word;
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      #info-pop button {
+        border: none;
+        padding: 10px 16px;
+        font-size: 15px;
+        color: white;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        border-radius: 2px;
+        margin-top: 20px;
+        position: relative;
+        left: 50%;
+        outline: none;
+        margin-bottom: 30px;
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        transform: translateX(-50%);
+        background: #10883e;
+      }
+      #pop-title {
+        display: inline;
+        position: relative;
+        top: 5px;
+        bottom: 5px;
+        left: 10px;
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      #blur {
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        -webkit-filter: brightness(0.5);
+        filter: brightness(0.5);
+        background: rgba(0, 0, 0, 0.27843);
+        display: none;
+      }
+      #down {
+        display: none;
+        position: absolute;
+        right: 5px;
+        background: #fff;
+        padding: 5px 10px;
+        -webkit-box-shadow: 0px 1px 20px rgba(204, 204, 204, 0.54902);
+        -moz-box-shadow: 0px 1px 20px rgba(204, 204, 204, 0.54902);
+        box-shadow: 0px 1px 20px rgba(204, 204, 204, 0.54902);
+        z-index: 10;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        border-radius: 2px;
+      }
+
+      #down li {
+        text-align: center;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        border-radius: 2px;
+        list-style: none;
+        height: 25px;
+        width: 100%;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      #down li:hover {
+        background: #158a42;
+        cursor: pointer;
+        color: white;
+      }
+
+      @media screen and (max-width: 1310px) {
+        main {
+          grid-template-columns: repeat(5, 1fr);
+        }
+      }
+
+      @media screen and (max-width: 1024px) {
+        main {
+          grid-template-columns: repeat(4, 1fr);
+        }
+        #info-pop,
+        #video-pop {
+          width: 60%;
+        }
+      }
+
+      @media screen and (max-width: 590px) {
+        main {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        #info-pop,
+        #video-pop {
+          width: 70%;
+        }
+      }
+
+      @media screen and (max-width: 440px) {
+        main {
+          grid-template-columns: repeat(1, 1fr);
+        }
+        #info-pop,
+        #video-pop {
+          width: 80%;
+        }
+      }
+      @media screen and (max-width: 350px) {
+        #info-pop,
+        #video-pop {
+          width: 90%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h2>CocoAnimation</h2>
+      <button>
+        <?xml version="1.0" encoding="iso-8859-1"?>
+        <svg
+          version="1.1"
+          style="height: 100%; width: 100%; fill: white"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          x="0px"
+          y="0px"
+          width="276.167px"
+          height="276.167px"
+          viewBox="0 0 276.167 276.167"
+          style="enable-background: new 0 0 276.167 276.167"
+          xml:space="preserve"
+        >
+          <g>
+            <g>
+              <path
+                d="M33.144,2.471C15.336,2.471,0.85,16.958,0.85,34.765s14.48,32.293,32.294,32.293s32.294-14.486,32.294-32.293
+			S50.951,2.471,33.144,2.471z"
+              />
+              <path
+                d="M137.663,2.471c-17.807,0-32.294,14.487-32.294,32.294s14.487,32.293,32.294,32.293c17.808,0,32.297-14.486,32.297-32.293
+			S155.477,2.471,137.663,2.471z"
+              />
+              <path
+                d="M243.873,67.059c17.804,0,32.294-14.486,32.294-32.293S261.689,2.471,243.873,2.471s-32.294,14.487-32.294,32.294
+			S226.068,67.059,243.873,67.059z"
+              />
+              <path
+                d="M32.3,170.539c17.807,0,32.297-14.483,32.297-32.293c0-17.811-14.49-32.297-32.297-32.297S0,120.436,0,138.246
+			C0,156.056,14.493,170.539,32.3,170.539z"
+              />
+              <path
+                d="M136.819,170.539c17.804,0,32.294-14.483,32.294-32.293c0-17.811-14.478-32.297-32.294-32.297
+			c-17.813,0-32.294,14.486-32.294,32.297C104.525,156.056,119.012,170.539,136.819,170.539z"
+              />
+              <path
+                d="M243.038,170.539c17.811,0,32.294-14.483,32.294-32.293c0-17.811-14.483-32.297-32.294-32.297
+			s-32.306,14.486-32.306,32.297C210.732,156.056,225.222,170.539,243.038,170.539z"
+              />
+              <path
+                d="M33.039,209.108c-17.807,0-32.3,14.483-32.3,32.294c0,17.804,14.493,32.293,32.3,32.293s32.293-14.482,32.293-32.293
+			S50.846,209.108,33.039,209.108z"
+              />
+              <path
+                d="M137.564,209.108c-17.808,0-32.3,14.483-32.3,32.294c0,17.804,14.487,32.293,32.3,32.293
+			c17.804,0,32.293-14.482,32.293-32.293S155.368,209.108,137.564,209.108z"
+              />
+              <path
+                d="M243.771,209.108c-17.804,0-32.294,14.483-32.294,32.294c0,17.804,14.49,32.293,32.294,32.293
+			c17.811,0,32.294-14.482,32.294-32.293S261.575,209.108,243.771,209.108z"
+              />
+            </g>
+          </g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+        </svg>
+      </button>
+      <div id="down">
+        <li>Tout</li>
+        <li>Stop motion</li>
+        <li>Autres</li>
+        <li>La voleuse</li>
+        <li>Course Poursuite</li>
+        <li>ISS</li>
+      </div>
+    </header>
+    <main></main>
+    <div id="blur"></div>
+    <div id="video-pop">
+      <iframe
+        src=""
+        frameborder="0"
+        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+    <div id="info-pop">
+      <img src="" id="pop-img" />
+      <h3 id="pop-title"></h3>
+      <p id="pop-desc"></p>
+      <button id="pop-btn">voir la vidéo</button>
+    </div>
+    <script>
+      "use strict";
+
+      var playlist = [
+        "PLTwOhZBwOGY2-1ECyzNE2KDnwAe99OfPs", // Stop motion
+        "PLTwOhZBwOGY3FOR9dbRy5FOPr6Wa0tJs7", // autre
+        "PLTwOhZBwOGY3TSz4dvJOODT47PVWoZ4WK", // le confinement
+        "PLTwOhZBwOGY2T7Q7PGIDGtOnAxY3Nzwoc", // la voleuse
+        "PLTwOhZBwOGY2EIbBBboSs9LN4R3btEhz7", // course poursuite
+        "PLTwOhZBwOGY1XH68AIutqXzB6OGj57CJP", // ISS
+        "PLTwOhZBwOGY30haQRXnD1TFVnIiSsQ5CY", // Tout
+      ];
+
+      var $ = function $(el) {
+        var all =
+          arguments.length > 1 && arguments[1] !== undefined
+            ? arguments[1]
+            : false;
+        return all ? document.querySelectorAll(el) : document.querySelector(el);
+      };
+
+      var options = {
+        // root: $("body"),
+        rootMargin: "0px",
+        threshold: 1.0,
+      };
+      var observer = new IntersectionObserver(function (e) {
+        for (var i = 0; i < e.length; i++) {
+          var el = e[i].target;
+          el.style.background = "transparent no-repeat center";
+          el.style.backgroundSize = "cover";
+          el.style.backgroundImage =
+            "url('" + e[i].target.getAttribute("v-img") + "')";
+        }
+      }, options);
+
+      function GET(url, param) {
+        var json =
+          arguments.length > 2 && arguments[2] !== undefined
+            ? arguments[2]
+            : false;
+        var header =
+          arguments.length > 3 && arguments[3] !== undefined
+            ? arguments[3]
+            : [];
+        var data = "";
+        return new Promise(function (res, rej) {
+          var xhttp = new XMLHttpRequest();
+
+          xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+              res(this.responseText);
+            }
+          };
+
+          if (json) {
+            data = JSON.stringify(param);
+            xhttp.open("GET", url, true);
+            xhttp.setRequestHeader("Content-Type", "application/json");
+          } else {
+            for (var key in param) {
+              if (data != "") {
+                data += "&";
+              }
+
+              data += key + "=" + encodeURIComponent(param[key]);
+            }
+
+            xhttp.open("GET", url + "?" + data, true);
+            xhttp.setRequestHeader(
+              "Content-Type",
+              "application/x-www-form-urlencoded"
+            );
+          }
+
+          header.map(function (head) {
+            xhttp.setRequestHeader(head[0], head[1]);
+          });
+          xhttp.send(data);
+        });
+      }
+
+      function SelectPlaylist(id) {
+        var ResultsMax =
+          arguments.length > 1 && arguments[1] !== undefined
+            ? arguments[1]
+            : 100;
+        return new Promise(function (res, rej) {
+          GET("https://www.googleapis.com/youtube/v3/playlistItems", {
+            key: "AIzaSyCFKve5GbwICMo-SipNFgGWLTTN6U_GQzs",
+            playlistId: id,
+            part: "snippet, contentDetails",
+          }).then(function (data) {
+            res(data);
+          });
+        });
+      }
+
+      function LoadAllVideo() {
+        var save =
+          arguments.length > 0 && arguments[0] !== undefined
+            ? arguments[0]
+            : false;
+
+        if (save) {
+          if (
+            localStorage.getItem(
+              new Date(Date.now()).toLocaleDateString().replace(/\//g, "-")
+            ) != null
+          ) {
+            return localStorage.getItem(
+              new Date(Date.now()).toLocaleDateString().replace(/\//g, "-")
+            );
+          } else {
+            return new Promise(function (res, rej) {
+              GET("https://www.googleapis.com/youtube/v3/playlistItems", {
+                key: "AIzaSyCFKve5GbwICMo-SipNFgGWLTTN6U_GQzs",
+                playlistId: playlist[playlist.length - 1],
+                part: "snippet, contentDetails",
+              }).then(function (data) {
+                localStorage.setItem(
+                  new Date(Date.now()).toLocaleDateString().replace(/\//g, "-"),
+                  data
+                );
+                res(data);
+              });
+            });
+          }
+        } else {
+          return new Promise(function (res, rej) {
+            GET("https://www.googleapis.com/youtube/v3/playlistItems", {
+              key: "AIzaSyCFKve5GbwICMo-SipNFgGWLTTN6U_GQzs",
+              playlistId: playlist[playlist.length - 1],
+              part: "snippet, contentDetails",
+            }).then(function (data) {
+              res(data);
+            });
+          });
+        }
+      }
+
+      $("#blur").addEventListener("click", function () {
+        $("#info-pop").style.display = "none";
+        $("#video-pop").style.display = "none";
+        $("#blur").style.display = "none";
+        $("#video-pop iframe").src = "";
+        $("#down").style.display = "none";
+      });
+      $("header button").addEventListener("click", function () {
+        $("#down").style.display = "block";
+        $("#blur").style.display = "block";
+      });
+
+      function ChangeCreateVideo() {
+        var text =
+          arguments.length > 0 && arguments[0] !== undefined
+            ? arguments[0]
+            : "Tout";
+        $("main").innerHTML = "";
+        var id = playlist[0];
+
+        switch (text.trim()) {
+          case "Tout":
+            id = playlist[playlist.length - 1];
+            break;
+
+          case "Stop motion":
+            id = playlist[0];
+            break;
+
+          case "Autres":
+            id = playlist[1];
+            break;
+
+          case "La voleuse":
+            id = playlist[3];
+            break;
+
+          case "Course Poursuite":
+            id = playlist[4];
+            break;
+
+          case "ISS":
+            id = playlist[5];
+            break;
+        }
+
+        SelectPlaylist(id, 100).then(function (data) {
+          CreateVideoElements(JSON.parse(data).items);
+        });
+      }
+
+      var _loop = function _loop(posI) {
+        $("#down li", true)[posI].addEventListener("click", function () {
+          $("#down").style.display = "none";
+          $("#blur").style.display = "none";
+          ChangeCreateVideo($("#down li", true)[posI].innerText);
+        });
+      };
+
+      for (var posI = 0; posI < $("#down li", true).length; posI++) {
+        _loop(posI);
+      }
+
+      function OpenVideo(id) {
+        $("#info-pop").style.display = "none";
+        $("#blur").style.display = "block";
+        $("#video-pop").style.display = "block";
+        $("#video-pop iframe").src = "https://www.youtube.com/embed/" + id;
+      }
+
+      function URLPlacer(str) {
+        var match = str.match(
+          /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gi
+        );
+        var final = str;
+        match.map(function (url) {
+          final = final.replace(
+            url,
+            '<a href="' + url + '" target="_BLANK">' + url + "</a>"
+          );
+        });
+        return final;
+      }
+
+      function OpenInfo(el) {
+        $("#video-pop").style.display = "none";
+        $("#blur").style.display = "block";
+        $("#info-pop").style.display = "block";
+        $("#pop-img").src = el.getAttribute("v-img");
+        $("#pop-title").innerText = el.getAttribute("v-title");
+        var desc = el.getAttribute("v-desc");
+        $("#pop-desc").innerHTML = URLPlacer(desc);
+        $("#pop-btn").setAttribute("v-id", el.getAttribute("v-id"));
+      }
+
+      $("#pop-btn").addEventListener("click", function () {
+        OpenVideo($("#pop-btn").getAttribute("v-id"));
+      });
+
+      function CreateVideoElements(data) {
+        data.map(function (video) {
+          var d = document.createElement("div");
+          var start = false;
+          var swipe = [];
+          d.id = video.id;
+          d.setAttribute("v-title", video.snippet.title);
+          d.setAttribute("v-desc", video.snippet.description);
+          d.setAttribute("v-img", video.snippet.thumbnails.high.url);
+          d.setAttribute("v-date", video.snippet.publishedAt);
+          d.setAttribute("v-id", video.snippet.resourceId.videoId);
+          d.addEventListener("click", function () {
+            OpenVideo(video.snippet.resourceId.videoId);
+          });
+          d.addEventListener("contextmenu", function (e) {
+            e.preventDefault();
+            OpenInfo(d);
+          });
+          d.addEventListener("touchstart", function () {
+            start = true;
+            swipe = [];
+          });
+          d.addEventListener("touchmove", function (e) {
+            if (start) swipe.push(e.touches[0].clientX);
+          });
+          d.addEventListener("touchend", function () {
+            start = false;
+            var grow = 0;
+            var min = 0;
+            var last = 0;
+
+            if (swipe.length > 10) {
+              for (var i = 0; i < swipe.length; i++) {
+                if (grow == 0 && min == 0) {
+                  grow = 1;
+                  last = swipe[i];
+                } else {
+                  if (swipe[i] > last) {
+                    grow++;
+                  } else {
+                    min++;
+                  }
+
+                  last = swipe[i];
+                }
+              }
+
+              if (grow > min) {
+                OpenInfo(d);
+              }
+            } else {
+              OpenVideo(video.snippet.resourceId.videoId);
+            }
+          });
+          $("main").appendChild(d);
+          observer.observe(d);
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        var video = LoadAllVideo(true);
+
+        if (video instanceof Promise) {
+          video.then(function (data) {
+            CreateVideoElements(JSON.parse(data).items);
+          });
+        } else {
+          CreateVideoElements(JSON.parse(video).items);
+        }
+      });
+    </script>
+  </body>
+</html>
