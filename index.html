@@ -475,6 +475,7 @@
             key: "AIzaSyCFKve5GbwICMo-SipNFgGWLTTN6U_GQzs",
             playlistId: id,
             part: "snippet, contentDetails",
+	    maxResults:100
           }).then(function (data) {
             res(data);
           });
@@ -502,6 +503,7 @@
                 key: "AIzaSyCFKve5GbwICMo-SipNFgGWLTTN6U_GQzs",
                 playlistId: playlist[playlist.length - 1],
                 part: "snippet, contentDetails",
+		maxResults:100
               }).then(function (data) {
                 localStorage.setItem(
                   new Date(Date.now()).toLocaleDateString().replace(/\//g, "-"),
