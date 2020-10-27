@@ -650,7 +650,7 @@
             var min = 0;
             var last = 0;
 
-            if (swipe.length > 5) {
+            if (swipe.length > 15) { // detection begins when it is greater than 15 values
               for (var i = 0; i < swipe.length; i++) {
                 if (grow == 0 && min == 0) {
                   grow = 1;
