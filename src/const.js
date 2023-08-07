@@ -1,1 +1,0 @@
-export const PAGES = ["Home","Projets", "Parcours", "Contact"]
