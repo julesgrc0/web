@@ -1,0 +1,138 @@
+.content-info {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background:
+        linear-gradient(90deg, rgba(33, 38, 50, 1) (22px - 1px),
+            transparent 1%) center,
+        linear-gradient(rgba(33, 38, 50, 1) (22px - 1px),
+            transparent 1%) center,
+        white;
+    background-size: 22px 22px;
+
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.if-margin {
+    position: relative;
+    height: 300px;
+    width: 100%;
+    top: 300px;
+}
+
+.inf-box {
+    position: relative;
+    top: 300px;
+    left: 5%;
+    width: 90%;
+
+    border: 2px solid;
+}
+
+
+.if-title {
+    margin-top: 10px;
+    font-size: 35px;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.if-mtitle {
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    color: white;
+    margin-left: 20px;
+    font-size: 18px;
+}
+
+.if-date {
+    color: rgb(180, 180, 180);
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+.if-desc {
+    color: white;
+    margin-left: 20px;
+    width: 80%;
+}
+
+.if-list {
+    margin-left: 20px;
+    list-style:circle;
+    font-size: 18px;
+}
+
+.if-comp,
+.if-exp,
+.if-form {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    width: 600px;
+    position: relative;
+    top: 300px;
+    border-radius: 10px;
+    margin-top: 30px;
+    left: calc(40% - 400px);
+}
+
+.if-box {
+    --c: white;
+    --b: 1px;
+    --g: 5px;
+    border-radius: 20px;
+    padding: calc(var(--g) + var(--b));
+    --_g: #0000 25%, var(--c) 0;
+    background:
+        conic-gradient(from 180deg at top var(--b) right var(--b), var(--_g)) var(--_i, 200%) 0 /200% var(--_i, var(--b)) no-repeat,
+        conic-gradient(at bottom var(--b) left var(--b), var(--_g)) 0 var(--_i, 200%)/var(--_i, var(--b)) 200% no-repeat;
+    transition: .3s, background-position .3s .3s;
+    cursor: pointer;
+
+
+    &:hover {
+        --_i: 100%;
+        transition: .3s, background-size .3s .3s;
+    }
+}
+
+.if-comp {
+    left: calc(40% + 300px);
+}
+
+.if-line {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+    top: 200px;
+    background: white;
+    width: 4px;
+    height: 1925px;
+    opacity: 0.2;
+    border-radius: 50%;
+}
+
+@media screen and (max-width: 1400px) {
+
+    .if-comp,
+    .if-exp,
+    .if-form {
+
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+@media screen and (max-width: 650px) {
+
+    .if-comp,
+    .if-exp,
+    .if-form {
+        width: 95%;
+    }
+}
