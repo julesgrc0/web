@@ -28,7 +28,7 @@ export default defineConfig({
     }),
     splitVendorChunkPlugin(),
   ],
-  base: "/",
+  base: "/web/",
 
   build: {
     outDir: "../",

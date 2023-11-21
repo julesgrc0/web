@@ -1,5 +1,5 @@
 {
-  "_router-Z0A0pIkh.js": {
+  "_router-0Hy0jkTJ.js": {
     "dynamicImports": [
       "src/components/TopBar.tsx",
       "src/pages/Home.tsx",
@@ -7,7 +7,7 @@
       "src/pages/Career.tsx",
       "src/pages/Contact.tsx"
     ],
-    "file": "assets/router-Z0A0pIkh.js",
+    "file": "assets/router-0Hy0jkTJ.js",
     "imports": [
       "index.html",
       "_vendor-QoCl0KGr.js"
@@ -23,9 +23,9 @@
     ],
     "dynamicImports": [
       "node_modules/workbox-window/build/workbox-window.prod.es5.mjs",
-      "_router-Z0A0pIkh.js"
+      "_router-0Hy0jkTJ.js"
     ],
-    "file": "assets/index-ZbJir4ar.js",
+    "file": "assets/index-ADULOMYh.js",
     "imports": [
       "_vendor-QoCl0KGr.js"
     ],
@@ -58,20 +58,20 @@
     "src": "src/assets/icons/pyedit.ico"
   },
   "src/components/TopBar.tsx": {
-    "file": "assets/TopBar-ovgGFT1R.js",
+    "file": "assets/TopBar-Q8zY4WU7.js",
     "imports": [
       "_vendor-QoCl0KGr.js",
-      "_router-Z0A0pIkh.js",
+      "_router-0Hy0jkTJ.js",
       "index.html"
     ],
     "isDynamicEntry": true,
     "src": "src/components/TopBar.tsx"
   },
   "src/pages/Career.tsx": {
-    "file": "assets/Career-Mv9r852x.js",
+    "file": "assets/Career-azH0OU9b.js",
     "imports": [
       "_vendor-QoCl0KGr.js",
-      "_router-Z0A0pIkh.js",
+      "_router-0Hy0jkTJ.js",
       "index.html"
     ],
     "isDynamicEntry": true,
@@ -101,10 +101,10 @@
       "assets/echiquier-c6X4w4DL.png",
       "assets/adr-VexMc_Lg.svg"
     ],
-    "file": "assets/Project-crr0IssY.js",
+    "file": "assets/Project-SVucb_79.js",
     "imports": [
       "_vendor-QoCl0KGr.js",
-      "_router-Z0A0pIkh.js",
+      "_router-0Hy0jkTJ.js",
       "index.html"
     ],
     "isDynamicEntry": true,
