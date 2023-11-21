@@ -29,7 +29,11 @@ export default defineConfig({
     splitVendorChunkPlugin(),
   ],
   base: "/",
+
   build: {
+    outDir: "../",
+    emptyOutDir: false,
+
     manifest: true,
     minify: "esbuild",
     target: "esnext",

@@ -1,0 +1,113 @@
+{
+  "_router-Z0A0pIkh.js": {
+    "dynamicImports": [
+      "src/components/TopBar.tsx",
+      "src/pages/Home.tsx",
+      "src/pages/Project.tsx",
+      "src/pages/Career.tsx",
+      "src/pages/Contact.tsx"
+    ],
+    "file": "assets/router-Z0A0pIkh.js",
+    "imports": [
+      "index.html",
+      "_vendor-QoCl0KGr.js"
+    ],
+    "isDynamicEntry": true
+  },
+  "_vendor-QoCl0KGr.js": {
+    "file": "assets/vendor-QoCl0KGr.js"
+  },
+  "index.html": {
+    "css": [
+      "assets/index-bQOQx3KI.css"
+    ],
+    "dynamicImports": [
+      "node_modules/workbox-window/build/workbox-window.prod.es5.mjs",
+      "_router-Z0A0pIkh.js"
+    ],
+    "file": "assets/index-ZbJir4ar.js",
+    "imports": [
+      "_vendor-QoCl0KGr.js"
+    ],
+    "isEntry": true,
+    "src": "index.html"
+  },
+  "node_modules/workbox-window/build/workbox-window.prod.es5.mjs": {
+    "file": "assets/workbox-window.prod.es5-prqDwDSL.js",
+    "isDynamicEntry": true,
+    "src": "node_modules/workbox-window/build/workbox-window.prod.es5.mjs"
+  },
+  "src/assets/icons/adr.svg": {
+    "file": "assets/adr-VexMc_Lg.svg",
+    "src": "src/assets/icons/adr.svg"
+  },
+  "src/assets/icons/culturesigne.png": {
+    "file": "assets/culturesigne-kjk9dFva.png",
+    "src": "src/assets/icons/culturesigne.png"
+  },
+  "src/assets/icons/echiquier.png": {
+    "file": "assets/echiquier-c6X4w4DL.png",
+    "src": "src/assets/icons/echiquier.png"
+  },
+  "src/assets/icons/eyesgames.ico": {
+    "file": "assets/eyesgames-2ndXU0Je.ico",
+    "src": "src/assets/icons/eyesgames.ico"
+  },
+  "src/assets/icons/pyedit.ico": {
+    "file": "assets/pyedit-LyFtOI6U.ico",
+    "src": "src/assets/icons/pyedit.ico"
+  },
+  "src/components/TopBar.tsx": {
+    "file": "assets/TopBar-ovgGFT1R.js",
+    "imports": [
+      "_vendor-QoCl0KGr.js",
+      "_router-Z0A0pIkh.js",
+      "index.html"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/components/TopBar.tsx"
+  },
+  "src/pages/Career.tsx": {
+    "file": "assets/Career-Mv9r852x.js",
+    "imports": [
+      "_vendor-QoCl0KGr.js",
+      "_router-Z0A0pIkh.js",
+      "index.html"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/pages/Career.tsx"
+  },
+  "src/pages/Contact.tsx": {
+    "file": "assets/Contact-_GOLHVJG.js",
+    "imports": [
+      "_vendor-QoCl0KGr.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/pages/Contact.tsx"
+  },
+  "src/pages/Home.tsx": {
+    "file": "assets/Home-mfTkEtIn.js",
+    "imports": [
+      "_vendor-QoCl0KGr.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/pages/Home.tsx"
+  },
+  "src/pages/Project.tsx": {
+    "assets": [
+      "assets/pyedit-LyFtOI6U.ico",
+      "assets/culturesigne-kjk9dFva.png",
+      "assets/eyesgames-2ndXU0Je.ico",
+      "assets/echiquier-c6X4w4DL.png",
+      "assets/adr-VexMc_Lg.svg"
+    ],
+    "file": "assets/Project-crr0IssY.js",
+    "imports": [
+      "_vendor-QoCl0KGr.js",
+      "_router-Z0A0pIkh.js",
+      "index.html"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/pages/Project.tsx"
+  }
+}
